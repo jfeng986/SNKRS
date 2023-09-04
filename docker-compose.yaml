@@ -1,0 +1,41 @@
+version: "3"
+services:
+  mysql:
+    image: mysql:latest
+    container_name: snkrs-mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_PASSWORD: 123456
+    privileged: true
+    restart: always
+    networks:
+      - snkrs-network
+
+  etcd:
+    image: bitnami/etcd:latest
+    container_name: snkrs-etcd
+    ports:
+      - "2379:2379"
+    environment:
+      ALLOW_NONE_AUTHENTICATION: "yes"
+      ETCD_ADVERTISE_CLIENT_URLS: "http://etcd:2379"
+    restart: always
+    networks:
+      - snkrs-network
+
+  redis:
+    image: redis:latest
+    container_name: snkrs-redis
+    privileged: true
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - "6379:6379"
+    restart: always
+    networks:
+      - snkrs-network
+
+networks:
+  snkrs-network:
