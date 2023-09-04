@@ -1,6 +1,6 @@
 package svc
 
-import "SNKRS/apps/product/rpc/internal/config"
+import "snkrs/apps/product/rpc/internal/config"
 
 type ServiceContext struct {
 	Config config.Config

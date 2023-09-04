@@ -1,4 +1,4 @@
-module SNKRS
+module snkrs
 
 go 1.21.0
 

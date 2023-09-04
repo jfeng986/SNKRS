@@ -3,9 +3,10 @@ package handler
 import (
 	"net/http"
 
-	"SNKRS/apps/pay/admin/internal/logic"
-	"SNKRS/apps/pay/admin/internal/svc"
-	"SNKRS/apps/pay/admin/internal/types"
+	"snkrs/apps/pay/admin/internal/logic"
+	"snkrs/apps/pay/admin/internal/svc"
+	"snkrs/apps/pay/admin/internal/types"
+
 	"github.com/zeromicro/go-zero/rest/httpx"
 )
 

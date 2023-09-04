@@ -1,7 +1,7 @@
 package svc
 
 import (
-	"SNKRS/apps/pay/admin/internal/config"
+	"snkrs/apps/pay/admin/internal/config"
 )
 
 type ServiceContext struct {

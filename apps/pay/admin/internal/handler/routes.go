@@ -4,7 +4,7 @@ package handler
 import (
 	"net/http"
 
-	"SNKRS/apps/pay/admin/internal/svc"
+	"snkrs/apps/pay/admin/internal/svc"
 
 	"github.com/zeromicro/go-zero/rest"
 )

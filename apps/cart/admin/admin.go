@@ -4,9 +4,9 @@ import (
 	"flag"
 	"fmt"
 
-	"SNKRS/apps/cart/admin/internal/config"
-	"SNKRS/apps/cart/admin/internal/handler"
-	"SNKRS/apps/cart/admin/internal/svc"
+	"snkrs/apps/cart/admin/internal/config"
+	"snkrs/apps/cart/admin/internal/handler"
+	"snkrs/apps/cart/admin/internal/svc"
 
 	"github.com/zeromicro/go-zero/core/conf"
 	"github.com/zeromicro/go-zero/rest"

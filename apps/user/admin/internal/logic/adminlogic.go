@@ -3,8 +3,8 @@ package logic
 import (
 	"context"
 
-	"SNKRS/apps/user/admin/internal/svc"
-	"SNKRS/apps/user/admin/internal/types"
+	"snkrs/apps/user/admin/internal/svc"
+	"snkrs/apps/user/admin/internal/types"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )
