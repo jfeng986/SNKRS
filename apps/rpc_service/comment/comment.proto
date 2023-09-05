@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package comment;
+option go_package="./comment";
+
+message CommentsRequest {
+  int64 target_id = 1;
+  int64 cursor = 2;
+  int32 ps = 3;
+}
+
+message CommentsResponse {
+  repeated CommentItem comments = 1;
+  bool is_end = 2;
+  int64 created_time = 3;
+}
+
+message CommentItem {
+  int64 id = 1;
+  int64 target_id = 2;
+  string content = 3;
+  int64 create_time = 4;
+  int64 update_time = 5;
+}
+
+service CommentService{
+  rpc Comments(CommentsRequest) returns(CommentsResponse);
+}
