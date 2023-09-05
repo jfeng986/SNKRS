@@ -2,6 +2,7 @@ package svc
 
 import (
 	"snkrs/apps/api/internal/config"
+	"snkrs/apps/comment/rpc/comment"
 	"snkrs/apps/order/rpc/order"
 	"snkrs/apps/product/rpc/product"
 
@@ -12,6 +13,7 @@ type ServiceContext struct {
 	Config     config.Config
 	OrderRPC   order.Order
 	ProductRPC product.Product
+	CommentRPC comment.Comment
 }
 
 func NewServiceContext(c config.Config) *ServiceContext {

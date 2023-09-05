@@ -105,3 +105,12 @@ type Order struct {
 	ProductImage       string  `json:"product_image"`
 	ProductDescription string  `json:"product_description"`
 }
+
+type ProductDetailRequest struct {
+	ProductID int64 `form:"product_id"`
+}
+
+type ProductDetailResponse struct {
+	Product  *Product   `json:"product"`
+	Comments []*Comment `json:"comments"`
+}
