@@ -1,1 +1,5 @@
 .DS_store
+apps/api_gateway/tmp
+apps/rpc_service/order/tmp
+apps/rpc_service/product/tmp
+apps/rpc_service/comment/tmp
