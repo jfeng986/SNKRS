@@ -3,7 +3,6 @@ package svc
 import (
 	"snkrs/apps/api_gateway/internal/config"
 
-	"snkrs/apps/rpc_service/comment/commentservice"
 	"snkrs/apps/rpc_service/order/orderservice"
 	"snkrs/apps/rpc_service/product/productservice"
 
@@ -14,7 +13,7 @@ type ServiceContext struct {
 	Config     config.Config
 	OrderRPC   orderservice.OrderService
 	ProductRPC productservice.ProductService
-	CommentRPC commentservice.CommentService
+	// CommentRPC commentservice.CommentService
 }
 
 func NewServiceContext(c config.Config) *ServiceContext {
@@ -22,6 +21,6 @@ func NewServiceContext(c config.Config) *ServiceContext {
 		Config:     c,
 		OrderRPC:   orderservice.NewOrderService(zrpc.MustNewClient(c.OrderRPC)),
 		ProductRPC: productservice.NewProductService(zrpc.MustNewClient(c.ProductRPC)),
-		CommentRPC: commentservice.NewCommentService(zrpc.MustNewClient(c.CommentRPC)),
+		// CommentRPC: commentservice.NewCommentService(zrpc.MustNewClient(c.CommentRPC)),
 	}
 }

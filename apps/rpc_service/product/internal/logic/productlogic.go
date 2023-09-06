@@ -2,7 +2,9 @@ package logic
 
 import (
 	"context"
+	"fmt"
 
+	"snkrs/apps/rpc_service/product/internal/model"
 	"snkrs/apps/rpc_service/product/internal/svc"
 	"snkrs/apps/rpc_service/product/product"
 
@@ -24,7 +26,15 @@ func NewProductLogic(ctx context.Context, svcCtx *svc.ServiceContext) *ProductLo
 }
 
 func (l *ProductLogic) Product(in *product.ProductItemRequest) (*product.ProductItem, error) {
-	// todo: add your logic here and delete this line
-
-	return &product.ProductItem{}, nil
+	v, err, _ := l.svcCtx.SingleGroup.Do(fmt.Sprintf("product:%d", in.ProductId), func() (interface{}, error) {
+		return l.svcCtx.ProductModel.FindOne(l.ctx, in.ProductId)
+	})
+	if err != nil {
+		return nil, err
+	}
+	p := v.(*model.Product)
+	return &product.ProductItem{
+		ProductId: p.Id,
+		Name:      p.Name,
+	}, nil
 }
