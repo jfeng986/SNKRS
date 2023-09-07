@@ -7,6 +7,7 @@ service ProductService {
   rpc Product(ProductItemRequest) returns (ProductItem) ;
   rpc Products(ProductRequest) returns(ProductResponse);
   rpc ProductList(ProductListRequest) returns(ProductListResponse);
+  rpc OperationProducts(OperationProductsRequest) returns (OperationProductsResponse);
 }
 
 message ProductItemRequest {
@@ -41,4 +42,11 @@ message ProductItem {
   string description = 3;
   string image_url = 4;
   int64 create_time = 5;
+}
+
+message OperationProductsRequest {
+}
+
+message OperationProductsResponse {
+  repeated ProductItem products = 1;
 }

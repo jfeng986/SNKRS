@@ -19,9 +19,10 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	ProductService_Product_FullMethodName     = "/product.ProductService/Product"
-	ProductService_Products_FullMethodName    = "/product.ProductService/Products"
-	ProductService_ProductList_FullMethodName = "/product.ProductService/ProductList"
+	ProductService_Product_FullMethodName           = "/product.ProductService/Product"
+	ProductService_Products_FullMethodName          = "/product.ProductService/Products"
+	ProductService_ProductList_FullMethodName       = "/product.ProductService/ProductList"
+	ProductService_OperationProducts_FullMethodName = "/product.ProductService/OperationProducts"
 )
 
 // ProductServiceClient is the client API for ProductService service.
@@ -31,6 +32,7 @@ type ProductServiceClient interface {
 	Product(ctx context.Context, in *ProductItemRequest, opts ...grpc.CallOption) (*ProductItem, error)
 	Products(ctx context.Context, in *ProductRequest, opts ...grpc.CallOption) (*ProductResponse, error)
 	ProductList(ctx context.Context, in *ProductListRequest, opts ...grpc.CallOption) (*ProductListResponse, error)
+	OperationProducts(ctx context.Context, in *OperationProductsRequest, opts ...grpc.CallOption) (*OperationProductsResponse, error)
 }
 
 type productServiceClient struct {
@@ -68,6 +70,15 @@ func (c *productServiceClient) ProductList(ctx context.Context, in *ProductListR
 	return out, nil
 }
 
+func (c *productServiceClient) OperationProducts(ctx context.Context, in *OperationProductsRequest, opts ...grpc.CallOption) (*OperationProductsResponse, error) {
+	out := new(OperationProductsResponse)
+	err := c.cc.Invoke(ctx, ProductService_OperationProducts_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ProductServiceServer is the server API for ProductService service.
 // All implementations must embed UnimplementedProductServiceServer
 // for forward compatibility
@@ -75,6 +86,7 @@ type ProductServiceServer interface {
 	Product(context.Context, *ProductItemRequest) (*ProductItem, error)
 	Products(context.Context, *ProductRequest) (*ProductResponse, error)
 	ProductList(context.Context, *ProductListRequest) (*ProductListResponse, error)
+	OperationProducts(context.Context, *OperationProductsRequest) (*OperationProductsResponse, error)
 	mustEmbedUnimplementedProductServiceServer()
 }
 
@@ -90,6 +102,9 @@ func (UnimplementedProductServiceServer) Products(context.Context, *ProductReque
 }
 func (UnimplementedProductServiceServer) ProductList(context.Context, *ProductListRequest) (*ProductListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ProductList not implemented")
+}
+func (UnimplementedProductServiceServer) OperationProducts(context.Context, *OperationProductsRequest) (*OperationProductsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method OperationProducts not implemented")
 }
 func (UnimplementedProductServiceServer) mustEmbedUnimplementedProductServiceServer() {}
 
@@ -158,6 +173,24 @@ func _ProductService_ProductList_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ProductService_OperationProducts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(OperationProductsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProductServiceServer).OperationProducts(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProductService_OperationProducts_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProductServiceServer).OperationProducts(ctx, req.(*OperationProductsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ProductService_ServiceDesc is the grpc.ServiceDesc for ProductService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -176,6 +209,10 @@ var ProductService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ProductList",
 			Handler:    _ProductService_ProductList_Handler,
+		},
+		{
+			MethodName: "OperationProducts",
+			Handler:    _ProductService_OperationProducts_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
