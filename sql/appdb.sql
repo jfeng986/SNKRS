@@ -82,18 +82,19 @@ CREATE TABLE `orderlist` (
     `id` varchar(64) NOT NULL DEFAULT '' COMMENT 'Order ID',
     `userid` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'User ID',
     `shippingid` bigint(20) NOT NULL DEFAULT 0 COMMENT 'Receiving information table ID',
-    `payment` decimal(20,2) DEFAULT NULL DEFAULT 0 COMMENT 'Actual payment amount',
+    `payment` decimal(20,2) DEFAULT 0 COMMENT 'Actual payment amount',
     `paymenttype` tinyint(4) NOT NULL DEFAULT 1 COMMENT 'Payment type: 1-Online payment',
     `status` smallint(6) NOT NULL DEFAULT 10 COMMENT 'Order status: 0-Canceled, 10-Unpaid, 20-Paid, 30-Pending shipment, 40-Pending receipt, 50-Transaction successful, 60-Transaction closed',
-    `payment_time` timestamp NOT NULL COMMENT 'Payment time',
-    `send_time` timestamp NOT NULL COMMENT 'Shipment time',
-    `end_time` timestamp NOT NULL COMMENT 'Transaction completion time',
-    `close_time` timestamp NOT NULL COMMENT 'Transaction closure time',
+    `payment_time` timestamp NULL DEFAULT NULL COMMENT 'Payment time',
+    `send_time` timestamp NULL DEFAULT NULL COMMENT 'Shipment time',
+    `end_time` timestamp NULL DEFAULT NULL COMMENT 'Transaction completion time',
+    `close_time` timestamp NULL DEFAULT NULL COMMENT 'Transaction closure time',
     `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Creation time',
     `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Update time',
     PRIMARY KEY (`id`),
     KEY `ix_userid` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Order Table';
+
 
 CREATE TABLE `orderitem` (
      `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Order Subtable ID',

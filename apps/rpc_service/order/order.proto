@@ -5,6 +5,7 @@ option go_package="./order";
 
 service OrderService {
   rpc Orders(OrdersRequest) returns(OrdersResponse);
+  rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse);
 }
 
 message OrdersRequest {
@@ -18,6 +19,14 @@ message OrdersResponse {
   repeated OrderItem orders = 1;
   bool is_end = 2;
   string create_time = 3;
+}
+
+message CreateOrderRequest {
+  int64 uid = 1;
+  int64 pid = 2;
+}
+
+message CreateOrderResponse {
 }
 
 message OrderItem {
