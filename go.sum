@@ -873,8 +873,6 @@ github.com/zeromicro/go-queue v1.1.8/go.mod h1:sKF0fI9cKmqY/Y9Pr2aRnt3zllnPglBJ1
 github.com/zeromicro/go-zero v1.4.3/go.mod h1:UmDjuW7LHd9j7+nnnPBcXF0HLNmjJw6OjHPTlSp7X7Y=
 github.com/zeromicro/go-zero v1.5.5 h1:qEHnDuCBu/gDBmfWEZXYow6ZmWmzsrJTjtjSMVm4SiY=
 github.com/zeromicro/go-zero v1.5.5/go.mod h1:AGCspTFitHzYjl5ddAmYWLfdt341+BrhefqlwO45UbU=
-github.com/zhoushuguang/lebron v0.0.0-20221121020928-ffeeb9fd62bb h1:5jXoS1jMxjFEdHptc/3RWfY1faudNKQ7UnHDFP8PPNg=
-github.com/zhoushuguang/lebron v0.0.0-20221121020928-ffeeb9fd62bb/go.mod h1:1amzef0UksG0fvnuFgo412Z9qIHr3T8xzKlOVrHdBPQ=
 go.etcd.io/etcd/api/v3 v3.5.5/go.mod h1:KFtNaxGDw4Yx/BA4iPPwevUTAuqcsPxzyX8PHydchN8=
 go.etcd.io/etcd/api/v3 v3.5.9 h1:4wSsluwyTbGGmyjJktOf3wFQoTBIURXHnq9n/G/JQHs=
 go.etcd.io/etcd/api/v3 v3.5.9/go.mod h1:uyAal843mC8uUVSLWz6eHa/d971iDGnCRpmKd2Z+X8k=
