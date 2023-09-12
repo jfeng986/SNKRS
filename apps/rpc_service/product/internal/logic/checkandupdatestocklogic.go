@@ -18,6 +18,15 @@ type CheckAndUpdateStockLogic struct {
 	logx.Logger
 }
 
+/*
+HMGET fetches the current values of "total" and "reserve" from the hash table identified by KEYS[1].
+These values are converted to numbers.
+An if condition checks if "reserve + 1" is less than or equal to "total".
+If the condition is true, it increments "reserve" by 1 using HINCRBY.
+If the increment is successful, the script returns 1.
+If the condition is not met, the script returns 0.
+*/
+
 const (
 	luaCheckAndUpdateScript = `
 		local counts = redis.call("HMGET", KEYS[1], "total", "reserve")

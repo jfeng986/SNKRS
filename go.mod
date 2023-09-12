@@ -5,7 +5,6 @@ go 1.21.0
 require (
 	github.com/zeromicro/go-queue v1.1.8
 	github.com/zeromicro/go-zero v1.5.5
-	github.com/zhoushuguang/lebron v0.0.0-20221121020928-ffeeb9fd62bb
 	golang.org/x/sync v0.2.0
 	google.golang.org/grpc v1.57.0
 	google.golang.org/protobuf v1.31.0
