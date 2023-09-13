@@ -1,4 +1,6 @@
 type (
+	Empty struct{}
+
 	Banner {
 		ID   int64  `json:"id"`
 		Name string `json:"name"`
@@ -100,6 +102,15 @@ type (
 		Product  *Product   `json:"product"`
 		Comments []*Comment `json:"comments"`
 	}
+
+	ReserveProductRequest {
+		UserID    int64 `form:"user_id"`
+		ProductID int64 `form:"product_id"`
+	}
+
+	ReserveProductResponse {
+		Message string `json:"message"`
+	}
 )
 
 service gateway {
@@ -117,4 +128,7 @@ service gateway {
 
 	@handler ProductDetailHandler
 	get /v1/product/detail (ProductDetailRequest) returns (ProductDetailResponse)
+
+	@handler ReserveProductHandler
+	post /v1/product/reserve (ReserveProductRequest) returns (ReserveProductResponse)
 }
