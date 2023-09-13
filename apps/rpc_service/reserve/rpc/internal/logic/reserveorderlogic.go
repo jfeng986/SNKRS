@@ -33,7 +33,7 @@ type KafkaData struct {
 }
 
 const (
-	limitPeriod       = 10
+	limitPeriod       = 15
 	limitQuota        = 1
 	reserveUserPrefix = "reserve#u#"
 	localCacheExpire  = time.Second * 60

@@ -14,3 +14,9 @@ ProductRPC:
       - 127.0.0.1:2379
     Key: product.rpc
   NonBlock: true
+ReserveRPC:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: reserve.rpc
+  NonBlock: true

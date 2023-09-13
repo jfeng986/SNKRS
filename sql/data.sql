@@ -1,3 +1,4 @@
+-- Active: 1693844668326@@127.0.0.1@3306@product
 USE product;
 
 INSERT INTO category(id, name)
