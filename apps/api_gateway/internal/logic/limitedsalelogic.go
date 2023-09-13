@@ -24,7 +24,5 @@ func NewLimitedSaleLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Limit
 }
 
 func (l *LimitedSaleLogic) LimitedSale() (resp *types.LimitedSaleResponse, err error) {
-	// todo: add your logic here and delete this line
-
 	return
 }
