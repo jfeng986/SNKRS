@@ -30,3 +30,26 @@ VALUES
 (15, 7, 'Easy Day', 'Relax in style', 'easy_day.jpg', 'The perfect shoe for a casual day', 70.00, 30, '1', '2023-09-14 16:00:00', '2023-09-14 16:00:00'),
 (16, 8, 'Elite Leather', 'Premium leather experience', 'elite_leather.jpg', 'Pure leather luxury', 220.00, 4, '1', '2023-09-15 17:00:00', '2023-09-15 17:00:00');
 
+USE user;
+
+INSERT INTO `user` (`username`, `password`, `phone`, `question`, `answer`) VALUES
+('user1', 'password1', '1234567890', 'Question 1', 'Answer 1'),
+('user2', 'password2', '2345678901', 'Question 2', 'Answer 2'),
+('user3', 'password3', '3456789012', 'Question 3', 'Answer 3'),
+('user4', 'password4', '4567890123', 'Question 4', 'Answer 4'),
+('user5', 'password5', '5678901234', 'Question 5', 'Answer 5'),
+('user6', 'password6', '6789012345', 'Question 6', 'Answer 6'),
+('user7', 'password7', '7890123456', 'Question 7', 'Answer 7'),
+('user8', 'password8', '8901234567', 'Question 8', 'Answer 8'),
+('user9', 'password9', '9012345678', 'Question 9', 'Answer 9'),
+('user10', 'password10', '0123456789', 'Question 10', 'Answer 10'),
+('user11', 'password11', '0987654321', 'Question 11', 'Answer 11'),
+('user12', 'password12', '9876543210', 'Question 12', 'Answer 12'),
+('user13', 'password13', '8765432109', 'Question 13', 'Answer 13'),
+('user14', 'password14', '7654321098', 'Question 14', 'Answer 14'),
+('user15', 'password15', '6543210987', 'Question 15', 'Answer 15'),
+('user16', 'password16', '5432109876', 'Question 16', 'Answer 16'),
+('user17', 'password17', '4321098765', 'Question 17', 'Answer 17'),
+('user18', 'password18', '3210987654', 'Question 18', 'Answer 18'),
+('user19', 'password19', '2109876543', 'Question 19', 'Answer 19'),
+('user20', 'password20', '1098765432', 'Question 20', 'Answer 20');
