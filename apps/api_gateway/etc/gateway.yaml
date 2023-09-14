@@ -1,0 +1,22 @@
+Name: gateway
+Host: 0.0.0.0
+Port: 8888
+
+OrderRPC:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: order.rpc
+  NonBlock: true
+ProductRPC:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: product.rpc
+  NonBlock: true
+ReserveRPC:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: reserve.rpc
+  NonBlock: true

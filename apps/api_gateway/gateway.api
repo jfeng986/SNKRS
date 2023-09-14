@@ -1,0 +1,134 @@
+type (
+	Empty struct{}
+
+	Banner {
+		ID   int64  `json:"id"`
+		Name string `json:"name"`
+		URL  string `json:"url"`
+	}
+
+	HomeBannerResponse {
+		Banners []*Banner `json:"banners"`
+	}
+
+	LimitedSaleResponse {
+		StartTime int64      `json:"start_time"` // limited sale start time
+		Products  []*Product `json:"products"`
+	}
+
+	Product {
+		ID          int64    `json:"id"`
+		Name        string   `json:"name"`
+		Description string   `json:"description"`
+		Images      []string `json:"images"`
+		Price       float64  `json:"price"`
+		Stock       int64    `json:"stock"`
+		Category    string   `json:"category"`
+		Status      int64    `json:"status"` // 1 in stock, 0 out of stock
+		CreateTime  int64    `json:"create_time"`
+		UpdateTime  int64    `json:"update_time"`
+	}
+
+	CategoryListRequest {
+		Cursor   int64  `form:"cursor"`
+		Ps       int64  `form:"ps,default=20"` // size of page
+		Category string `form:"category"`
+		Sort     string `form:"sort"`
+	}
+
+	CategoryListResponse {
+		Products []*Product `json:"products"`
+		IsEnd    bool       `json:"is_end"`
+		LastVal  int64      `json:"last_val"`
+	}
+
+	ProductCommentRequest {
+		ProductID int64 `form:"product_id"`
+		Cursor    int64 `form:"cursor"`
+		Ps        int64 `form:"ps,default=20"`
+	}
+
+	ProductCommentResponse {
+		Comments    []*Comment `json:"comments"`
+		IsEnd       bool       `json:"is_end"`       // is last page
+		CommentTime int64      `json:"comment_time"` // the last command time in comment list
+	}
+
+	Comment {
+		ID         int64  `json:"id"`          // comment id
+		ProductID  int64  `json:"product_id"`  // product id
+		Content    string `json:"content"`     // comment content
+		User       *User  `json:"user"`        // user info
+		CreateTime int64  `json:"create_time"` // create time
+		UpdateTime int64  `json:"update_time"` // update time
+	}
+
+	User {
+		ID   int64  `json:"id"`   // user id
+		Name string `json:"name"` // user name
+	}
+
+	OrderListRequest {
+		UID    int64 `form:"uid"`
+		Status int32 `form:"status,optional"`
+		Cursor int64 `form:"cursor,optional"`
+		Ps     int64 `form:"ps,default=20"`
+	}
+
+	OrderListResponse {
+		Orders    []*Order `json:"orders"`
+		IsEnd     bool     `json:"is_end"` // is last page
+		OrderTime int64    `json:"order_time"`
+	}
+
+	Order {
+		OrderID            string  `json:"order_id"`
+		Status             int32   `json:"status"`
+		Quantity           int64   `json:"quantity"`
+		Payment            float64 `json:"payment"`
+		TotalPrice         float64 `json:"total_price"`
+		CreateTime         int64   `json:"create_time"`
+		ProductID          int64   `json:"product_id"`
+		ProductName        string  `json:"product_name"`
+		ProductImage       string  `json:"product_image"`
+		ProductDescription string  `json:"product_description"`
+	}
+
+	ProductDetailRequest {
+		ProductID int64 `form:"product_id"`
+	}
+
+	ProductDetailResponse {
+		Product  *Product   `json:"product"`
+		Comments []*Comment `json:"comments"`
+	}
+
+	ReserveProductRequest {
+		UserID    int64 `form:"user_id"`
+		ProductID int64 `form:"product_id"`
+	}
+
+	ReserveProductResponse {
+		Message string `json:"message"`
+	}
+)
+
+service gateway {
+	@handler LimitedSaleHandler
+	get /v1/limitedsale returns (LimitedSaleResponse)
+
+	@handler CategoryListHandler
+	get /v1/category/list (CategoryListRequest) returns (CategoryListResponse)
+
+	@handler ProductCommentHandler
+	get /v1/product/comment (ProductCommentRequest) returns (ProductCommentResponse)
+
+	@handler OrderListHandler
+	get /v1/order/list (OrderListRequest) returns (OrderListResponse)
+
+	@handler ProductDetailHandler
+	get /v1/product/detail (ProductDetailRequest) returns (ProductDetailResponse)
+
+	@handler ReserveProductHandler
+	post /v1/product/reserve (ReserveProductRequest) returns (ReserveProductResponse)
+}
