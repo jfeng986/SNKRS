@@ -3,6 +3,7 @@ package logic
 import (
 	"context"
 	"fmt"
+	"sync"
 
 	"snkrs/apps/rpc_service/product/internal/model"
 	"snkrs/apps/rpc_service/product/internal/svc"
@@ -25,7 +26,12 @@ func NewProductLogic(ctx context.Context, svcCtx *svc.ServiceContext) *ProductLo
 	}
 }
 
+var productMutex sync.Mutex
+
 func (l *ProductLogic) Product(in *product.ProductItemRequest) (*product.ProductItem, error) {
+	productMutex.Lock()
+	defer productMutex.Unlock()
+
 	v, err, _ := l.svcCtx.SingleGroup.Do(fmt.Sprintf("product:%d", in.ProductId), func() (interface{}, error) {
 		return l.svcCtx.ProductModel.FindOne(l.ctx, in.ProductId)
 	})
